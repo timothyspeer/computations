@@ -17,7 +17,7 @@ def changeComputation(master, topMenu, compName, n):
         print('The old frame is already destroyed')
     if n == 0:
         currentFrame = wallisproduct.WallisProductFrame(master=master)
-        currentFrame.grid()    
+        currentFrame.drawFrame()
     elif n == 1:
         currentFrame = tk.Frame(master=master)
         currentFrame.grid()
@@ -36,7 +36,7 @@ def main():
     master.config(menu=topMenu)
     
     currentFrame = wallisproduct.WallisProductFrame(master=master)
-    currentFrame.grid()
+    currentFrame.drawFrame()
 
     master.mainloop()
     
