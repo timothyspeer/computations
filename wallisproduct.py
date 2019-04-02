@@ -13,13 +13,14 @@ class WallisProductFrame(tk.Frame):
                                                       + ' of the sequence whose nth term is given by \n\n [2*1/(2*1-1)]*[2*1/(2*1+1)]x' 
                                                       + '[2*2/(2*2-1)]*[2*2/(2*2+1)]x ...x[2*n/(2*n-1)]*[2*n/(2*n+1)] \n\n'
                                                       + ' This program allows the user to input an'
-                                                      + ' integer n in the range [1, 990] and will calculate an approximation to the Wallis product by using the nth term from the above sequence.')  
+                                                      + ' integer n in the range [1, 989] and will calculate an approximation to the Wallis product by using the nth term from the above sequence.')  
         self.description.grid(row=0, columnspan=2)
         
         self.numLabel = tk.Label(master=self, text='n = ')
         self.numLabel.grid(row=1, column=0, sticky='E')
         
         self.numEntry = tk.Entry(master=self, width=4, textvariable=self.num)
+        self.numEntry.bind('<Key>', self.pressEnter)
         self.numEntry.grid(row=1, column=1, sticky='W')
 
         self.approximationLabel = tk.Label(master=self, text='Approximation = ')
@@ -35,11 +36,14 @@ class WallisProductFrame(tk.Frame):
     def calcApprox(self):
         try:
             value = int(self.num.get())
-            if value >= 1 and value <= 990:
+            if value >= 1 and value <= 989:
                 return self.wallisProduct(value)
         except ValueError:
             pass
-        return 'Enter an integer in [1, 990]'
+        return 'Enter an integer in [1, 989]'
+    def pressEnter(self, event):
+        if event.keycode == 13:
+            self.calculation.set(str(self.calcApprox()))
     def wallisProduct(self, n):
         if n == 1:
             return 4 / 3

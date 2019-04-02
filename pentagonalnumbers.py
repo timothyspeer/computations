@@ -18,6 +18,7 @@ class PentagonalNumbersFrame(tk.Frame):
         self.numLabel.grid(row=1, column=0, sticky='E')
         
         self.numEntry = tk.Entry(master=self, width=4, textvariable=self.num)
+        self.numEntry.bind('<Key>', self.pressEnter)
         self.numEntry.grid(row=1, column=1, sticky='W')
         
         self.approximationLabel = tk.Label(master=self, text='Nth Pentagonal Number = ')
@@ -38,5 +39,8 @@ class PentagonalNumbersFrame(tk.Frame):
         except ValueError:
             pass
         return 'Enter an integer in [1, 1000]'
+    def pressEnter(self, event):
+        if event.keycode == 13:
+            self.calculation.set(str(self.calcApprox()))
     def pentagonalNumber(self, n):
         return int(n * (3*n-1) / 2)
