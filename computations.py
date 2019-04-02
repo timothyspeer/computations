@@ -1,5 +1,6 @@
 import tkinter as tk
 import wallisproduct
+import pentagonalnumbers
 
 def createComputationMenu(master, topMenu, availableComputations):
     computationMenu = tk.Menu(master=topMenu, tearoff=0)
@@ -19,16 +20,14 @@ def changeComputation(master, topMenu, compName, n):
         currentFrame = wallisproduct.WallisProductFrame(master=master)
         currentFrame.drawFrame()
     elif n == 1:
-        currentFrame = tk.Frame(master=master)
-        currentFrame.grid()
-        currentLabel = tk.Label(master=currentFrame, text=compName)
-        currentLabel.grid()
+        currentFrame = pentagonalnumbers.PentagonalNumbersFrame(master=master)
+        currentFrame.drawFrame()
     
 def main():
     master = tk.Tk()
     master.title('Computations')
     
-    availableComputations = ['Wallis Product', 'Second Computation', 'Quit']
+    availableComputations = ['Wallis Product', 'Pentagonal Numbers', 'Quit']
     
     topMenu = tk.Menu(master=master, tearoff=0)
     computationMenu = createComputationMenu(master, topMenu, availableComputations)    
