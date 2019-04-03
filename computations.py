@@ -17,10 +17,10 @@ def changeComputation(master, topMenu, compName, n):
     except IndexError:
         print('The old frame is already destroyed')
     if n == 0:
-        currentFrame = wallisproduct.WallisProductFrame(master=master)
+        currentFrame = wallisproduct.WallisProductFrame(master)
         currentFrame.drawFrame()
     elif n == 1:
-        currentFrame = pentagonalnumbers.PentagonalNumbersFrame(master=master)
+        currentFrame = pentagonalnumbers.PentagonalNumbersFrame(master)
         currentFrame.drawFrame()
     
 def main():
@@ -34,7 +34,7 @@ def main():
     topMenu.add_cascade(label=availableComputations[0], menu=computationMenu)
     master.config(menu=topMenu)
     
-    currentFrame = wallisproduct.WallisProductFrame(master=master)
+    currentFrame = wallisproduct.WallisProductFrame(master)
     currentFrame.drawFrame()
 
     master.mainloop()
