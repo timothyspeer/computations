@@ -1,11 +1,13 @@
 import tkinter as tk
 import wallisproduct
 import pentagonalnumbers
+import fibonaccinumbers
 
 def createComputationMenu(master, topMenu, availableComputations):
     computationMenu = tk.Menu(master=topMenu, tearoff=0)
     computationMenu.add_command(label=availableComputations[0], command=lambda: changeComputation(master, topMenu, availableComputations[0], 0))
     computationMenu.add_command(label=availableComputations[1], command=lambda: changeComputation(master, topMenu, availableComputations[1], 1))
+    computationMenu.add_command(label=availableComputations[2], command=lambda: changeComputation(master, topMenu, availableComputations[2], 2))
 
     return computationMenu
 
@@ -22,12 +24,15 @@ def changeComputation(master, topMenu, compName, n):
     elif n == 1:
         currentFrame = pentagonalnumbers.PentagonalNumbersFrame(master)
         currentFrame.drawFrame()
+    elif n == 2:
+        currentFrame = fibonaccinumbers.FibonacciNumbersFrame(master)
+        currentFrame.drawFrame()
     
 def main():
     master = tk.Tk()
     master.title('Computations')
     
-    availableComputations = ['Wallis Product', 'Pentagonal Numbers', 'Quit']
+    availableComputations = ['Wallis Product', 'Pentagonal Numbers', 'Fibonacci Numbers']
     
     topMenu = tk.Menu(master=master, tearoff=0)
     computationMenu = createComputationMenu(master, topMenu, availableComputations)    
